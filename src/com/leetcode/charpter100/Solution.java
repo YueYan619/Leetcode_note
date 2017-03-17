@@ -3,6 +3,7 @@ package com.leetcode.charpter100;
 /**
  * Created by yy on 2017/3/16.
  */
+//same tree
 public class Solution {
     public static boolean isSameTree(TreeNode p, TreeNode q) {
         if(p == null && q == null) return true;
