@@ -3,44 +3,44 @@ package com.leetcode.charpter2;
 /**
  * Created by yy on 2017/3/14.
  */
+
+
+/**
+ *You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+ You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+ Output: 7 -> 0 -> 8
+ */
 public class Solution {
-    public static int addTwoNumbers(ListNode l1, ListNode l2) {
-        int sum1 = l1.val;
-        int sum2 = l2.val;
-        while(l1.next !=null){
-            l1 = l1.next;
-           sum1 = sum1*10+l1.val;
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode prev = new ListNode(0);
+        ListNode m = prev;
 
+        int carry = 0;
+
+        while(true){
+            if(l1==null&& l2==null&&carry==0) break;
+            int temp1 = l1==null?0:l1.val;
+            int temp2 = l2==null?0:l2.val;
+            int x = temp1+temp2+carry;
+            if(x>=10) {
+                x = x%10;
+                carry = 1;
+            }else{
+                carry =0;
+            }
+            m.next = new ListNode(x);
+            m = m.next;
+            if(l1!= null) l1 = l1.next;
+            if(l2!= null) l2 = l2.next;
         }
-        System.out.println("sum1:"+sum1);
-        while(l2.next !=null){
-            l2 = l2.next;
-            sum2 = sum2*10+l2.val;
-
-        }
-        System.out.println("sum2:"+sum2);
-
-        int sum = sum1 + sum2;
-        int count =1;
-        while(sum/10!=0){
-            sum = sum/10;
-            count++;
-            System.out.println("count="+count);
-        }
-        ListNode fisrt=null;
-        ListNode next=null;
-        while(count>0){
-
-
-
-        }
-        return sum;
+        return prev.next;
     }
 
 
     public static void main(String[] args) {
-
-
         ListNode l1 = new ListNode(1);
         ListNode l2 = new ListNode(1);
         ListNode l3 = new ListNode(1);
@@ -55,8 +55,8 @@ public class Solution {
         l22.next = l23;
         l23.next = null;
 
-        int x = addTwoNumbers(l1,l21);
-        System.out.println(x);
+
+//        System.out.println(x);
     }
 }
 
